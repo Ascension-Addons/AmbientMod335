@@ -1,5 +1,5 @@
 ## Interface: 30300
-## Title: AmbientMod
+## Title: Ambient Mod
 ## Notes: Adds options to configure various world and rendering settings, such as ambient darkness, time of day, and light intensity.|n|nConfigure in Esc -> Interface -> AddOns -> AmbientMod
 ## SavedVariables: AmbientMod
 ## Author: Robinsch
