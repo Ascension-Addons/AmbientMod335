@@ -53,10 +53,18 @@
             high:SetText("Faster")
             self.type = CONTROLTYPE_SLIDER;
             self.cvar = "worldTimeSpeed";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
             BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+            self.value = value;
             SetWorldTimeSpeed(value);
+            _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -84,7 +92,9 @@
           BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+          self.value = value;
           SetCVar(self.cvar, value);
+          _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -125,10 +135,18 @@
             high:SetText("Default")
             self.type = CONTROLTYPE_SLIDER;
             self.cvar = "ambientShade";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
             BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+            self.value = value;
             SetCVar(self.cvar, value);
+            _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -153,10 +171,18 @@
             high:SetText("Default")
             self.type = CONTROLTYPE_SLIDER;
             self.cvar = "lightLinearAttenuation";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
             BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+            self.value = value;
             SetCVar(self.cvar, value);
+            _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -181,10 +207,18 @@
           high:SetText("Default")
           self.type = CONTROLTYPE_SLIDER;
           self.cvar = "lightQuadraticAttenuation";
+          self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
           BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+            self.value = value;
             SetCVar(self.cvar, value);
+            _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -209,10 +243,18 @@
           high:SetText("Default")
           self.type = CONTROLTYPE_SLIDER;
           self.cvar = "fogDistance";
+          self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
           BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+          self.value = value;
           SetCVar(self.cvar, value);
+          _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -237,10 +279,18 @@
           high:SetText("Default")
           self.type = CONTROLTYPE_SLIDER;
           self.cvar = "fogDensity";
+          self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+              self:SetDisplayValue(value);
+              self.value = value;
+              SetCVar(self.cvar, value);
+            end
           BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
         <OnValueChanged>
+          self.value = value;
           SetCVar(self.cvar, value);
+          _G[self:GetName().."Value"]:SetText(MTrunc(value, 2))
         </OnValueChanged>
       </Scripts>
     </Slider>
@@ -274,8 +324,8 @@
     </CheckButton>
     <CheckButton name="$parentEntityCulling" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
-        <Anchor point="LEFT" relativeTo="$parentTerrainCulling">
-          <Offset x="128" y="0"/>
+        <Anchor point="TOPLEFT" relativeTo="$parentWMOCulling" relativePoint="BOTTOMLEFT">
+          <Offset x="0" y="-18"/>
         </Anchor>
       </Anchors>
       <Scripts>
@@ -317,7 +367,7 @@
     <CheckButton name="$parentLightCulling" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="LEFT" relativeTo="$parentWorldLightQuadraticAttenuation" relativePoint="LEFT">
-          <Offset x="178" y="0"/>
+          <Offset x="168" y="0"/>
         </Anchor>
       </Anchors>
       <Scripts>
